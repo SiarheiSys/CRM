@@ -41,12 +41,20 @@ public class CreateProjectTest {
     driver.findElement(By.name("_password")).sendKeys("Student2020!");
     driver.findElement(By.id("_submit")).click();
     //js.executeScript("window.scrollTo(0,0)");
-    new WebDriverWait(driver, 10).until(ExpectedConditions.titleContains("Панель инструментов"));
+    new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Панель инструментов"));
     driver.findElement(By.xpath("//span[text()='Проекты']")).click();
     driver.findElement(By.xpath("//span[text()='Мои проекты']")).click();
-    new WebDriverWait(driver, 10).until(ExpectedConditions.titleContains("Все - Мои проекты - Все проекты - Проекты"));
+    new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Все - Мои проекты - Все проекты - Проекты"));
     driver.findElement(By.xpath("//a[@href='/project/create/' and text()='Создать проект']")).click();
     driver.findElement(By.name("crm_project[name]")).sendKeys("Обучение AQA");
+    driver.findElement(By.xpath("//span[text()='Укажите организацию']/following-sibling::span")).click();
+    new WebDriverWait(driver, 30);
+    driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='123test']")).click();
+    driver.findElement(By.xpath("//div[@id='s2id_crm_project_contactMain-uid-613291678a843']")).click();
+    new WebDriverWait(driver, 30);
+    driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='Brown Bob']")).click();
+
+
     {
       WebElement element = driver.findElement(By.cssSelector(".select2-default > .select2-arrow"));
       Actions builder = new Actions(driver);
