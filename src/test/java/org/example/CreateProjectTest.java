@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,19 +16,19 @@ import java.util.concurrent.TimeUnit;
 
 public class CreateProjectTest {
   private WebDriver driver;
-  JavascriptExecutor js;
 
   @Before
   public void setUp() {
     System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
     driver = new FirefoxDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    js = (JavascriptExecutor) driver;
   }
+
   @After
   public void tearDown() {
     driver.quit();
   }
+
   @Test
   public void createProject() {
     driver.get("https://crm.geekbrains.space/user/login");
