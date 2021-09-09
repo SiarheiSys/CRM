@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,8 +17,8 @@ public class CreateContactPersonTest {
 
   @Before
   public void setUp() {
-    System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
-    driver = new FirefoxDriver();
+    System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+    driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
