@@ -32,16 +32,15 @@ public class CreateNewUserTest {
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//a[@href='https://diary.ru/user/registration']")).click();
         driver.findElement(By.id("signupform-username")).click();
-        driver.findElement(By.id("signupform-username")).sendKeys("sissergey1032");
+        driver.findElement(By.id("signupform-username")).sendKeys("sissergey1036");
         driver.findElement(By.id("signupform-password")).click();
         driver.findElement(By.id("signupform-password")).clear();
         driver.findElement(By.id("signupform-password")).sendKeys("63623400");
         driver.findElement(By.id("signupform-email")).click();
-        driver.findElement(By.id("signupform-email")).sendKeys("sissergey@yandex.kcv");
+        driver.findElement(By.id("signupform-email")).sendKeys("sissergey@yandex.kcr");
         driver.findElement(By.id("chk_box_user_confirm")).click();
         driver.findElement(By.id("signup_btn")).click();
         new WebDriverWait(driver, 10);
-        //driver.findElement(By.name("NewBlogForm[community]")).click();
         driver.findElement(By.id("newblogform-title")).click();
         driver.findElement(By.id("newblogform-title")).sendKeys("Мой дневник");
         driver.findElement(By.name("new-blogs-button")).click();
