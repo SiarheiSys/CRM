@@ -29,7 +29,6 @@ public class CreateNewUserTest {
     @Test
     public void createnewuser() {
         driver.get("https://diary.ru/");
-        //driver.manage().window().setSize(new Dimension(1550, 838));
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//a[@href='https://diary.ru/user/registration']")).click();
         driver.findElement(By.id("signupform-username")).click();
