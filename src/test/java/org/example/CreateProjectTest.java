@@ -46,7 +46,7 @@ public class CreateProjectTest {
     driver.findElement(By.xpath("//span[text()='Укажите организацию']/following-sibling::span")).click();
     new WebDriverWait(driver, 30);
     driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='123test']")).click();
-    driver.findElement(By.xpath("//div[@id='s2id_crm_project_contactMain-uid-613291678a843']")).click();
+    driver.findElement(By.xpath("//div[@class='select2-container select2']")).click();
     new WebDriverWait(driver, 30);
     driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='Brown Bob']")).click();
     driver.findElement(By.name("crm_project[businessUnit]")).click();
