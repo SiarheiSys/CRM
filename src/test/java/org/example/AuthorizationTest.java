@@ -38,7 +38,7 @@ public class AuthorizationTest {
         Assertions.assertEquals("sissergey", driver.findElement(By.id("loginform-username")).getAttribute("value"));
         driver.findElement(By.id("loginform-password")).click();
         driver.findElement(By.id("loginform-password")).sendKeys("63623400");
-        Assertions.assertNotNull(driver.findElement(By.id("loginform-password")), "Поле 'логин' не заполнено");
+        Assertions.assertNotNull(driver.findElement(By.id("loginform-password")), "Поле 'пароль' не заполнено");
         Assertions.assertEquals("63623400", driver.findElement(By.id("loginform-password")).getAttribute("value"));
         driver.switchTo().frame(0);
         driver.findElement(By.cssSelector(".recaptcha-checkbox-border")).click();
