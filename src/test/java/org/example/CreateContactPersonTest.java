@@ -30,28 +30,46 @@ public class CreateContactPersonTest {
   public void createContactPerson() {
     driver.get("https://crm.geekbrains.space/user/login");
     Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Логин']")), "Нет заголовка окна");
+    Assertions.assertEquals("Логин", driver.getTitle());
     driver.manage().window().maximize();
     driver.findElement(By.name("_username")).sendKeys("Applanatest1");
     Assertions.assertNotNull(driver.findElement(By.name("_username")), "Поле 'логин' не заполнено");
+    Assertions.assertEquals("Applanatest1", driver.findElement(By.name("_username")).getAttribute("value"));
     driver.findElement(By.name("_password")).click();
     driver.findElement(By.name("_password")).sendKeys("Student2020!");
     Assertions.assertNotNull(driver.findElement(By.name("_password")), "Поле 'пароль' не заполнено");
+    Assertions.assertEquals("Student2020!", driver.findElement(By.name("_password")).getAttribute("value"));
+    Assertions.assertTrue(driver.findElement(By.id("_submit")).isDisplayed());
     driver.findElement(By.id("_submit")).click();
     new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Панель инструментов"));
+    Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Панель инструментов']")), "Нет заголовка окна");
+    Assertions.assertEquals("Панель инструментов", driver.getTitle());
     driver.findElement(By.xpath("//span[@class='title' and text()='Контрагенты']")).click();
     driver.findElement(By.xpath("//span[@class='title' and text()='Контактные лица']")).click();
     new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Все - Контактные лица - Контактные лица - Контрагенты"));
+    Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Все - Контактные лица - Контактные лица - Контрагенты']")), "Нет заголовка окна");
+    Assertions.assertEquals("Все - Контактные лица - Контактные лица - Контрагенты", driver.getTitle());
     driver.findElement(By.xpath("//a[@href='/contact/create' and text()='Создать контактное лицо']")).click();
     new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Создать контактное лицо - Контактные лица - Контрагенты"));
+    Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Создать контактное лицо - Контактные лица - Контрагенты']")), "Нет заголовка окна");
+    Assertions.assertEquals("Создать контактное лицо - Контактные лица - Контрагенты", driver.getTitle());
     driver.findElement(By.name("crm_contact[lastName]")).click();
     driver.findElement(By.name("crm_contact[lastName]")).sendKeys("Сыс");
+    Assertions.assertNotNull(driver.findElement(By.name("crm_contact[lastName]")), "Поле 'Фамилия' не заполнено");
+    Assertions.assertEquals("Сыс", driver.findElement(By.name("crm_contact[lastName]")).getAttribute("value"));
     driver.findElement(By.name("crm_contact[firstName]")).click();
     driver.findElement(By.name("crm_contact[firstName]")).sendKeys("Сергей");
+    Assertions.assertNotNull(driver.findElement(By.name("crm_contact[firstName]")), "Поле 'Имя' не заполнено");
+    Assertions.assertEquals("Сергей", driver.findElement(By.name("crm_contact[firstName]")).getAttribute("value"));
     driver.findElement(By.cssSelector(".select2-arrow")).click();
     new WebDriverWait(driver, 30);
+    Assertions.assertTrue(driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='123test']")).isDisplayed());
     driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='123test']")).click();
     driver.findElement(By.name("crm_contact[jobTitle]")).click();
     driver.findElement(By.name("crm_contact[jobTitle]")).sendKeys("Генеральный директор");
+    Assertions.assertNotNull(driver.findElement(By.name("crm_contact[jobTitle]")), "Поле 'Должность' не заполнено");
+    Assertions.assertEquals("Генеральный директор", driver.findElement(By.name("crm_contact[jobTitle]")).getAttribute("value"));
+    Assertions.assertEquals("Сохранить и закрыть", driver.findElement(By.cssSelector(".btn-group:nth-child(4) > .btn")).getText());
     driver.findElement(By.cssSelector(".btn-group:nth-child(4) > .btn")).click();
   }
 }
