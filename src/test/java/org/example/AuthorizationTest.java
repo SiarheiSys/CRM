@@ -30,16 +30,21 @@ public class AuthorizationTest {
         Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Главная страница — @дневники: асоциальная сеть']")), "Нет заголовка окна");
         Assertions.assertEquals("Главная страница — @дневники: асоциальная сеть", driver.getTitle());
         driver.manage().window().maximize();
-        Assertions.assertEquals("Вход", driver.findElement(By.id("_submit")).getText());
+        Assertions.assertEquals("Вход", driver.findElement(By.xpath("//a[@href='https://diary.ru/user/login']")).getText());
         driver.findElement(By.xpath("//a[@href='https://diary.ru/user/login']")).click();
         driver.findElement(By.id("loginform-username")).click();
         driver.findElement(By.id("loginform-username")).sendKeys("sissergey");
+        Assertions.assertNotNull(driver.findElement(By.id("loginform-username")), "Поле 'логин' не заполнено");
+        Assertions.assertEquals("sissergey", driver.findElement(By.id("loginform-username")).getAttribute("value"));
         driver.findElement(By.id("loginform-password")).click();
         driver.findElement(By.id("loginform-password")).sendKeys("63623400");
+        Assertions.assertNotNull(driver.findElement(By.id("loginform-password")), "Поле 'логин' не заполнено");
+        Assertions.assertEquals("63623400", driver.findElement(By.id("loginform-password")).getAttribute("value"));
         driver.switchTo().frame(0);
         driver.findElement(By.cssSelector(".recaptcha-checkbox-border")).click();
         new WebDriverWait(driver, 30);
         driver.switchTo().defaultContent();
+        Assertions.assertEquals("Войти", driver.findElement(By.id("login_btn")).getText());
         driver.findElement(By.id("login_btn")).click();
     }
 }
