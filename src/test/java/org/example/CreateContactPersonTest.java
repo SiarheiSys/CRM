@@ -13,6 +13,14 @@ import java.util.concurrent.TimeUnit;
 public class CreateContactPersonTest {
   private WebDriver driver;
 
+  public void waiting(String str, int sec) {
+    new WebDriverWait(driver, sec).until(ExpectedConditions.titleContains(str));
+  }
+
+  public void waitSimple(int sec) {
+    new WebDriverWait(driver, sec);
+  }
+
   @BeforeEach
   public void setUp() {
     System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -41,16 +49,19 @@ public class CreateContactPersonTest {
     Assertions.assertEquals("Student2020!", driver.findElement(By.name("_password")).getAttribute("value"));
     Assertions.assertEquals("Войти", driver.findElement(By.id("_submit")).getText());
     driver.findElement(By.id("_submit")).click();
-    new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Панель инструментов"));
+    waiting("Панель инструментов", 30);
+    //new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Панель инструментов"));
     Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Панель инструментов']")), "Нет заголовка окна");
     Assertions.assertEquals("Панель инструментов", driver.getTitle());
     driver.findElement(By.xpath("//span[@class='title' and text()='Контрагенты']")).click();
     driver.findElement(By.xpath("//span[@class='title' and text()='Контактные лица']")).click();
-    new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Все - Контактные лица - Контактные лица - Контрагенты"));
+    waiting("Все - Контактные лица - Контактные лица - Контрагенты", 30);
+    //new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Все - Контактные лица - Контактные лица - Контрагенты"));
     Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Все - Контактные лица - Контактные лица - Контрагенты']")), "Нет заголовка окна");
     Assertions.assertEquals("Все - Контактные лица - Контактные лица - Контрагенты", driver.getTitle());
     driver.findElement(By.xpath("//a[@href='/contact/create' and text()='Создать контактное лицо']")).click();
-    new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Создать контактное лицо - Контактные лица - Контрагенты"));
+    waiting("Создать контактное лицо - Контактные лица - Контрагенты", 30);
+    //new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Создать контактное лицо - Контактные лица - Контрагенты"));
     Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Создать контактное лицо - Контактные лица - Контрагенты']")), "Нет заголовка окна");
     Assertions.assertEquals("Создать контактное лицо - Контактные лица - Контрагенты", driver.getTitle());
     driver.findElement(By.name("crm_contact[lastName]")).click();
@@ -62,7 +73,8 @@ public class CreateContactPersonTest {
     Assertions.assertNotNull(driver.findElement(By.name("crm_contact[firstName]")), "Поле 'Имя' не заполнено");
     Assertions.assertEquals("Сергей", driver.findElement(By.name("crm_contact[firstName]")).getAttribute("value"));
     driver.findElement(By.cssSelector(".select2-arrow")).click();
-    new WebDriverWait(driver, 30);
+    waitSimple(30);
+    //new WebDriverWait(driver, 30);
     Assertions.assertTrue(driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='123test']")).isDisplayed());
     driver.findElement(By.xpath("//div[@class='select2-result-label' and text()='123test']")).click();
     driver.findElement(By.name("crm_contact[jobTitle]")).click();
