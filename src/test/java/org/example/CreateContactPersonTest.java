@@ -39,7 +39,7 @@ public class CreateContactPersonTest {
     driver.findElement(By.name("_password")).sendKeys("Student2020!");
     Assertions.assertNotNull(driver.findElement(By.name("_password")), "Поле 'пароль' не заполнено");
     Assertions.assertEquals("Student2020!", driver.findElement(By.name("_password")).getAttribute("value"));
-    Assertions.assertTrue(driver.findElement(By.id("_submit")).isDisplayed());
+    Assertions.assertEquals("Войти", driver.findElement(By.id("_submit")).getText());
     driver.findElement(By.id("_submit")).click();
     new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("Панель инструментов"));
     Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Панель инструментов']")), "Нет заголовка окна");
