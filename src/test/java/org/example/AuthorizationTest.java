@@ -18,6 +18,7 @@ public class AuthorizationTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
     @AfterEach
     public void tearDown() {
         driver.quit();
