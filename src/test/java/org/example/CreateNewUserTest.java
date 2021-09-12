@@ -27,10 +27,10 @@ public class CreateNewUserTest {
     @DisplayName("Создание нового пользователя")
     @Test
     public void createNewUser() {
+        driver.manage().window().maximize();
         driver.get("https://diary.ru/");
         Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Главная страница — @дневники: асоциальная сеть']")), "Нет заголовка окна");
         Assertions.assertEquals("Главная страница — @дневники: асоциальная сеть", driver.getTitle());
-        driver.manage().window().maximize();
         Assertions.assertEquals("Регистрация", driver.findElement(By.xpath("//a[@href='https://diary.ru/user/registration']")).getText());
         driver.findElement(By.xpath("//a[@href='https://diary.ru/user/registration']")).click();
         driver.findElement(By.id("signupform-username")).click();

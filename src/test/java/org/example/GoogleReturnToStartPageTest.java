@@ -31,10 +31,10 @@ public class GoogleReturnToStartPageTest {
     @DisplayName("Возврат на стартовую страницу")
     @Test
     public void returnToStartPage() {
+        driver.manage().window().maximize();
         driver.get("https://google.by");
         Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Google']")), "Нет заголовка окна");
         Assertions.assertEquals("Google", driver.getTitle());
-        driver.manage().window().maximize();
         driver.findElement(By.xpath("//input[@title='Поиск']")).click();
         driver.findElement(By.xpath("//input[@title='Поиск']")).sendKeys("Гомель");
         Assertions.assertNotNull(driver.findElement(By.xpath("//input[@title='Поиск']")), "Поле 'Поиск' не заполнено");

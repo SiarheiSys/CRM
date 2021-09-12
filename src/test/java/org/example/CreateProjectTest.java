@@ -37,10 +37,10 @@ public class CreateProjectTest {
   @DisplayName("Создание проекта")
   @Test
   public void createProject() {
+    driver.manage().window().maximize();
     driver.get("https://crm.geekbrains.space/user/login");
     Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Логин']")), "Нет заголовка окна");
     Assertions.assertEquals("Логин", driver.getTitle());
-    driver.manage().window().maximize();
     driver.findElement(By.name("_username")).sendKeys("Applanatest1");
     Assertions.assertNotNull(driver.findElement(By.name("_username")), "Поле 'логин' не заполнено");
     Assertions.assertEquals("Applanatest1", driver.findElement(By.name("_username")).getAttribute("value"));

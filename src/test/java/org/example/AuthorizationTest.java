@@ -27,10 +27,10 @@ public class AuthorizationTest {
     @DisplayName("Авторизация")
     @Test
     public void authorization() {
+        driver.manage().window().maximize();
         driver.get("https://diary.ru/");
         Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Главная страница — @дневники: асоциальная сеть']")), "Нет заголовка окна");
         Assertions.assertEquals("Главная страница — @дневники: асоциальная сеть", driver.getTitle());
-        driver.manage().window().maximize();
         Assertions.assertEquals("Вход", driver.findElement(By.xpath("//a[@href='https://diary.ru/user/login']")).getText());
         driver.findElement(By.xpath("//a[@href='https://diary.ru/user/login']")).click();
         driver.findElement(By.id("loginform-username")).click();
