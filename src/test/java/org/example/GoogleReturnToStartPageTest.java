@@ -24,8 +24,7 @@ public class GoogleReturnToStartPageTest {
     }
 
     @AfterEach
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(5000);
+    public void tearDown() {
         driver.quit();
     }
 
