@@ -1,7 +1,8 @@
 package org.example;
 
+import org.example.google.SearchResultPage;
+import org.example.google.StartPageRus;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +21,8 @@ public class GoogleReturnToStartPageTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
     @AfterEach
@@ -31,21 +33,21 @@ public class GoogleReturnToStartPageTest {
     @DisplayName("Возврат на стартовую страницу")
     @Test
     public void returnToStartPage() {
-        driver.manage().window().maximize();
         driver.get("https://google.by");
-        Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Google']")), "Нет заголовка окна");
+        StartPageRus start = new StartPageRus(driver);
+        Assertions.assertNotNull(start.getTitle(), "Нет заголовка окна");
         Assertions.assertEquals("Google", driver.getTitle());
-        driver.findElement(By.xpath("//input[@title='Поиск']")).click();
-        driver.findElement(By.xpath("//input[@title='Поиск']")).sendKeys("Гомель");
-        Assertions.assertNotNull(driver.findElement(By.xpath("//input[@title='Поиск']")), "Поле 'Поиск' не заполнено");
-        Assertions.assertEquals("Гомель", driver.findElement(By.xpath("//input[@title='Поиск']")).getAttribute("value"));
-        driver.findElement(By.xpath("//input[@value='Поиск в Google']")).click();
+        start.search("Гомель");
+        Assertions.assertNotNull(start.getSearch(), "Поле 'Поиск' не заполнено");
+        Assertions.assertEquals("Гомель", start.getSearch().getAttribute("value"));
+        start.searchBtn();
         waitSimple("Гомель - Поиск в Google", 5);
-        Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Гомель - Поиск в Google']")), "Нет заголовка окна");
+        SearchResultPage result = new SearchResultPage(driver);
+        Assertions.assertNotNull(result.getTitle(), "Нет заголовка окна");
         Assertions.assertEquals("Гомель - Поиск в Google", driver.getTitle());
-        driver.findElement(By.xpath("//img[@src='/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png']")).click();
+        result.logo();
         waitSimple("Google", 5);
-        Assertions.assertNotNull(driver.findElement(By.xpath("//title[text()='Google']")), "Нет заголовка окна");
+        Assertions.assertNotNull(start.getTitle(), "Нет заголовка окна");
         Assertions.assertEquals("Google", driver.getTitle());
     }
 }
