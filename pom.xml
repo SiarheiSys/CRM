@@ -20,12 +20,6 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-api</artifactId>-->
-<!--            <version>5.7.2</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -77,10 +71,6 @@
                                 <name>junit.jupiter.extensions.autodetection.enabled</name>
                                 <value>true</value>
                             </property>
-<!--                            <property>-->
-<!--                                <name>allure.results.directory</name>-->
-<!--                                <value>${project.build.directory}/allure-results</value>-->
-<!--                            </property>-->
                         </systemProperties>
                                     <systemPropertyVariables>
                                       <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
