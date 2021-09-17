@@ -7,10 +7,16 @@ import org.example.dairy.StartPage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class AuthorizationTest {
@@ -30,6 +36,15 @@ public class AuthorizationTest {
 
     @AfterEach
     public void tearDown() {
+        LogEntries browserLogs = driver.manage().logs().get(LogType.BROWSER);
+        List<LogEntry> allLogRows = browserLogs.getAll();
+        if (allLogRows.size() > 0 ) {
+            try (BufferedWriter out = new BufferedWriter(new FileWriter("logs.log", true))){
+                out.write(String.valueOf(allLogRows));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         driver.quit();
     }
 
