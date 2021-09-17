@@ -46,7 +46,7 @@ public class CreateProjectTest {
     LogEntries browserLogs = driver.manage().logs().get(LogType.BROWSER);
     List<LogEntry> allLogRows = browserLogs.getAll();
     if (allLogRows.size() > 0 ) {
-      try (BufferedWriter out = new BufferedWriter(new FileWriter("logs.log", true))){
+      try (BufferedWriter out = new BufferedWriter(new FileWriter("CreateProjectTest.log", true))){
         out.write(String.valueOf(allLogRows));
       } catch (IOException e) {
         e.printStackTrace();

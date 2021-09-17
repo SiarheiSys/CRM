@@ -35,7 +35,7 @@ public class CreateNewUserTest {
         LogEntries browserLogs = driver.manage().logs().get(LogType.BROWSER);
         List<LogEntry> allLogRows = browserLogs.getAll();
         if (allLogRows.size() > 0 ) {
-            try (BufferedWriter out = new BufferedWriter(new FileWriter("logs.log", true))){
+            try (BufferedWriter out = new BufferedWriter(new FileWriter("CreateNewUserTest.log", true))){
                 out.write(String.valueOf(allLogRows));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -60,11 +60,11 @@ public class CreateNewUserTest {
                 .checkBox();
         Assertions.assertTrue(page.getCheckBox().isEnabled());
         Assertions.assertNotNull(page.getUsername(), "Поле 'логин' не заполнено");
-        Assertions.assertEquals("sissergey103000998", page.getUsername().getAttribute("value"));
+        Assertions.assertEquals("sissergey1030009938", page.getUsername().getAttribute("value"));
         Assertions.assertNotNull(page.getPassword(), "Поле 'пароль' не заполнено");
         Assertions.assertEquals("63623400", page.getPassword().getAttribute("value"));
         Assertions.assertNotNull(page.getEmail(), "Поле 'email' не заполнено");
-        Assertions.assertEquals("sissergey@yandex.kcppppp", page.getEmail().getAttribute("value"));
+        Assertions.assertEquals("sissergey@yandex.kclppppp", page.getEmail().getAttribute("value"));
         Assertions.assertEquals("Зарегистрироваться", page.getSignUpBtn().getText());
         page.signUpBtn();
         new WebDriverWait(driver, 10);
