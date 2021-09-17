@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.*;
 
 public class NewBlogPage {
     private WebDriver driver;
@@ -27,15 +28,15 @@ public class NewBlogPage {
         return btn;
     }
 
+    @Step
     public NewBlogPage title(String a) {
         title.sendKeys(a);
         return this;
     }
 
+    @Step
     public NewBlogPage btn() {
         btn.click();
         return this;
     }
-
-
 }

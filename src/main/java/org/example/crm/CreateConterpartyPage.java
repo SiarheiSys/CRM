@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.*;
 
 public class CreateConterpartyPage {
     private WebDriver driver;
@@ -58,31 +59,37 @@ public class CreateConterpartyPage {
         return saveAndCloseBtn;
     }
 
+    @Step
     public CreateConterpartyPage lastNameSendKeys(String a) {
         lastName.sendKeys(a);
         return this;
     }
 
+    @Step
     public CreateConterpartyPage firstNameSendKeys(String a) {
         firstName.sendKeys(a);
         return this;
     }
 
+    @Step
     public CreateConterpartyPage arrowClick() {
         arrow.click();
         return this;
     }
 
+    @Step
     public CreateConterpartyPage resultClick() {
         result.click();
         return this;
     }
 
+    @Step
     public CreateConterpartyPage jobTitleSendKeys(String a) {
         jobTitle.sendKeys(a);
         return this;
     }
 
+    @Step
     public CreateConterpartyPage saveAndCloseBtnClick() {
         saveAndCloseBtn.click();
         return this;

@@ -1,9 +1,11 @@
 package org.example.dairy;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.*;
 
 public class RegistrationPage {
     private WebDriver driver;
@@ -48,29 +50,34 @@ public class RegistrationPage {
         return signUpBtn;
     }
 
+    @Step
     public RegistrationPage username(String a) {
         username.sendKeys(a);
         return this;
     }
 
+    @Step
     public RegistrationPage password(String a){
         password.clear();
         String str = "";
-        str.equals(password.getAttribute("value"));
+        Assertions.assertTrue(str.equals(password.getAttribute("value")));
         password.sendKeys(a);
         return this;
     }
 
+    @Step
     public RegistrationPage email(String a) {
         email.sendKeys(a);
         return this;
     }
 
+    @Step
     public RegistrationPage checkBox() {
         checkBox.click();
         return this;
     }
 
+    @Step
     public RegistrationPage signUpBtn() {
         signUpBtn.click();
         return this;

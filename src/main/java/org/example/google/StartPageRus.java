@@ -1,10 +1,10 @@
 package org.example.google;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.*;
 
 public class StartPageRus {
     private WebDriver driver;
@@ -97,21 +97,21 @@ public class StartPageRus {
         return settings;
     }
 
+    @Step
     public StartPageRus search(String a) {
         search.sendKeys(a);
         return this;
     }
 
+    @Step
     public StartPageRus searchBtn() {
         searchBtn.click();
         return this;
     }
 
+    @Step
     public StartPageRus bel() {
         bel.click();
         return this;
     }
-
-
-
 }

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.*;
 
 public class CrmStartPage {
     private WebDriver driver;
@@ -41,16 +42,19 @@ public class CrmStartPage {
         return submitBtn;
     }
 
+    @Step("Ввод логина")
     public CrmStartPage usernameFieldSendKeys (String a) {
         usernameField.sendKeys(a);
         return this;
     }
 
+    @Step("Ввод пароля")
     public CrmStartPage passwordFieldSendKeys (String a) {
         passwordField.sendKeys(a);
         return this;
     }
 
+    @Step("Вход")
     public CrmStartPage submitBtnClick () {
         submitBtn.click();
         return this;

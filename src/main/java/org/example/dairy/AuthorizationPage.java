@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.*;
 
 public class AuthorizationPage {
     private WebDriver driver;
@@ -42,16 +43,19 @@ public class AuthorizationPage {
         return loginBtn;
     }
 
+    @Step
     public AuthorizationPage password(String a) {
         password.sendKeys(a);
         return this;
     }
 
+    @Step
     public AuthorizationPage recaptcha() {
         recaptcha.click();
         return this;
     }
 
+    @Step
     public AuthorizationPage loginBtn() {
         loginBtn.click();
         return this;

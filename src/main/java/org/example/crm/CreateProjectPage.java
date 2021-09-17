@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.*;
 
 public class CreateProjectPage {
     private WebDriver driver;
@@ -104,81 +105,97 @@ public class CreateProjectPage {
         return saveAndCloseBtn;
     }
 
+    @Step
     public CreateProjectPage nameSendKeys(String a) {
         name.sendKeys(a);
         return this;
     }
 
+    @Step
     public CreateProjectPage chooseOrganisationClick() {
         chooseOrganisation.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage organisationClick() {
         organisation.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage choosePersonClick() {
         choosePerson.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage personClick() {
         person.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage chooseBusinessUnitClick() {
         chooseBusinessUnit.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage businessUnitClick() {
         businessUnit.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage chooseCuratorClick() {
         chooseCurator.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage curatorClick() {
         curator.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage chooseProjectHeadClick() {
         chooseProjectHead.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage projectHeadClick() {
         projectHead.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage chooseAdministratorClick() {
         chooseAdministrator.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage administratorClick() {
         administrator.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage chooseManagerClick() {
         chooseManager.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage managerClick() {
         manager.click();
         return this;
     }
 
+    @Step
     public CreateProjectPage saveAndCloseBtnClick() {
         saveAndCloseBtn.click();
         return this;
